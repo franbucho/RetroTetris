@@ -1,84 +1,177 @@
+/* ===== ESTILOS BASE ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Press Start 2P', cursive;
-    background-color: #0a0a12;
-    color: #00ffcc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #0a0a12;
+  color: #00ffcc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(0, 255, 204, 0.1) 0%, transparent 25%),
+    radial-gradient(circle at 80% 70%, rgba(255, 0, 200, 0.1) 0%, transparent 25%);
+  overflow: hidden;
 }
 
+/* ===== CONTENEDOR PRINCIPAL ===== */
 #game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px;
+  border: 6px solid #00ffcc;
+  box-shadow: 
+    0 0 0 4px #ff00c8,
+    0 0 30px rgba(0, 255, 204, 0.5);
+  padding: 20px;
+  background-color: rgba(15, 15, 26, 0.9);
 }
 
+/* ===== ÁREA DE JUEGO ===== */
 #game-area {
-    display: flex;
-    gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 #gameCanvas {
-    background-color: #000;
-    border: 4px solid #00ffcc;
+  background-color: #000;
+  border: 4px solid #00ffcc;
+  box-shadow: inset 0 0 20px rgba(0, 255, 204, 0.2);
+  image-rendering: pixelated;
 }
 
+/* ===== PANEL LATERAL ===== */
 #side-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 180px;
 }
 
 #next-piece-container {
-    text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 3px solid #ff00c8;
+  padding: 10px;
+  text-align: center;
 }
 
 #nextPieceCanvas {
-    background-color: #000;
-    border: 2px solid #00ffcc;
-    margin-top: 10px;
+  background-color: #000;
+  border: 2px solid #00ffcc;
+  margin-top: 10px;
+  image-rendering: pixelated;
 }
 
 #game-info {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 10px;
-    border: 2px solid #ff00c8;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 3px solid #ffcc00;
+  padding: 15px;
+  font-size: 14px;
 }
 
+#game-info div {
+  margin: 10px 0;
+  color: #e0f8f3;
+}
+
+/* ===== BOTONES ===== */
 button {
-    background-color: #ff00c8;
-    color: white;
-    border: none;
-    padding: 10px;
-    font-family: 'Press Start 2P', cursive;
-    cursor: pointer;
+  background-color: #ff00c8;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  box-shadow: 0 4px 0 #cc00a0;
 }
 
 button:hover {
-    background-color: #cc00a0;
+  background-color: #e000b8;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #cc00a0;
 }
 
+button:active {
+  transform: translateY(4px);
+  box-shadow: none;
+}
+
+#startButton, #restartButton {
+  background-color: #ffcc00;
+  color: #0a0a12;
+  box-shadow: 0 4px 0 #cc9900;
+}
+
+#startButton:hover, #restartButton:hover {
+  background-color: #e6b800;
+}
+
+/* ===== PANTALLA DE GAME OVER ===== */
 #gameOverScreen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 100;
+}
+
+#gameOverScreen h1 {
+  color: #ff00c8;
+  text-shadow: 0 0 10px #ff00c8;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+#gameOverScreen div {
+  color: #00ffcc;
+  font-size: 1.2rem;
+  margin: 10px 0;
 }
 
 .hidden {
-    display: none !important;
+  display: none !important;
+}
+
+/* ===== EFECTOS ESPECIALES ===== */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  #game-area {
+    flex-direction: column;
+  }
+  
+  #side-panel {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  #next-piece-container, #game-info {
+    flex: 1;
+    min-width: 150px;
+  }
 }
