@@ -3,9 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retro Tetris</title>
+    <title>Retro Tetris (Control por Gestos)</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> </head>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <script src="game.js"></script> </body>
+    <div id="game-container">
+        <div id="loginScreen" class="hidden">
+            <p>Inicia sesión para guardar tu puntuación y jugar con control facial.</p>
+            <button id="loginBtn">Sign In with Google</button>
+        </div>
+        <div id="userProfile" class="hidden">
+            <img id="userAvatar" src="" alt="User Avatar">
+            <span id="userName"></span>
+            <button id="logoutBtn">Logout</button>
+            <span id="playCounterDisplay">Plays: 0</span>
+        </div>
+
+        <div id="game-area">
+            <canvas id="gameCanvas"></canvas>
+            <div id="side-panel">
+                <div id="next-piece-container">
+                    <h3>NEXT</h3>
+                    <canvas id="nextPieceCanvas" width="120" height="120"></canvas>
+                </div>
+                <div id="game-info">
+                    <div>SCORE: <span id="scoreDisplay">0</span></div>
+                    <div>LEVEL: <span id="levelDisplay">1</span></div>
+                    <div>LINES: <span id="linesDisplay">0</span></div>
+                </div>
+                <button id="startButton">START GAME</button>
+                <button id="muteBtn">🔊</button>
+                <div id="leaderboard-controls">
+                    <button id="globalBtn" class="active">Global</button>
+                    <button id="regionalBtn" disabled>Regional</button>
+                </div>
+            </div>
+        </div>
+        <div id="gameOverScreen" class="hidden">
+            <h1>GAME OVER</h1>
+            <div>FINAL SCORE: <span id="finalScore">0</span></div>
+            <div>LINES CLEARED: <span id="finalLines">0</span></div>
+            <button id="restartButton">PLAY AGAIN</button>
+            <button id="lobbyBtn">BACK TO LOBBY</button>
+            <div class="share-buttons">
+                <button id="twitterShareBtn">Share on Twitter</button>
+                <button id="whatsappShareBtn">Share on WhatsApp</button>
+            </div>
+        </div>
+
+        <video id="inputVideo" style="display:none;"></video>
+        <div id="messageOverlay">
+            <p id="messageText"></p>
+        </div>
+
+        <div id="leaderboard">
+            <h2>Leaderboard</h2>
+            <ol id="leaderboardList"></ol>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+
+    <script src="game.js"></script>
+</body>
 </html>
