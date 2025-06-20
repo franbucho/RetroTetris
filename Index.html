@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Tetris with Face Control</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="game-container">
+        <div id="loginScreen" class="screen">
+            <h1>Retro Tetris</h1>
+            <p>Play with your face!</p>
+            <button id="loginBtn" class="btn google-btn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google logo">
+                Sign in with Google
+            </button>
+        </div>
+
+        <div id="userProfile" class="profile-container">
+            <img id="userAvatar" src="" alt="User avatar" class="avatar">
+            <span id="userName"></span>
+            <button id="logoutBtn" class="btn logout-btn">Logout</button>
+        </div>
+
+        <div id="messageOverlay" class="overlay">
+            <p id="messageText">Sign in to play!</p>
+            <button id="startButton" class="btn start-btn">Start Game</button>
+        </div>
+
+        <div id="game-area">
+            <canvas id="gameCanvas"></canvas>
+            <div id="nextPieceContainer">
+                <h3>Next Piece</h3>
+                <canvas id="nextPieceCanvas"></canvas>
+            </div>
+            <div id="gameInfo">
+                <div id="scoreDisplay">Score: 0</div>
+                <div id="levelDisplay">Level: 1</div>
+                <div id="linesDisplay">Lines: 0</div>
+                <div id="playCounterDisplay">Plays: 0</div>
+                <button id="muteBtn" class="btn icon-btn">🔊</button>
+            </div>
+        </div>
+
+        <div id="leaderboardContainer">
+            <div id="leaderboardTabs">
+                <button id="globalBtn" class="tab-btn active">Global</button>
+                <button id="regionalBtn" class="tab-btn" disabled>Regional</button>
+            </div>
+            <ul id="leaderboardList"></ul>
+        </div>
+
+        <div id="gameOverScreen" class="screen">
+            <h1>Game Over</h1>
+            <div id="finalScoreDisplay">Score: <span id="finalScore">0</span></div>
+            <div id="finalLinesDisplay">Lines: <span id="finalLinesDisplay">0</span></div>
+            <div class="button-group">
+                <button id="playAgainBtn" class="btn">Play Again</button>
+                <button id="lobbyBtn" class="btn">Back to Lobby</button>
+            </div>
+            <div class="share-buttons">
+                <button id="twitterShareBtn" class="btn share-btn twitter">Share on Twitter</button>
+                <button id="whatsappShareBtn" class="btn share-btn whatsapp">Share on WhatsApp</button>
+            </div>
+        </div>
+
+        <video id="inputVideo" class="input_video" style="display: none;"></video>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
