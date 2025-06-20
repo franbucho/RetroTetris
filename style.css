@@ -1,0 +1,249 @@
+/* Fuentes y básicos */
+body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    background-color: #1a1a1a;
+    color: #fff;
+    overflow: hidden;
+}
+
+#game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Pantallas */
+.screen {
+    text-align: center;
+    margin-top: 100px;
+}
+
+/* Botones */
+.btn {
+    font-family: inherit;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #00ffcc;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #00ccb3;
+}
+
+.google-btn img {
+    height: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.logout-btn {
+    background-color: #ff4444;
+}
+
+.logout-btn:hover {
+    background-color: #cc0000;
+}
+
+.start-btn {
+    background-color: #00ccff;
+}
+
+.icon-btn {
+    font-size: 20px;
+    background-color: transparent;
+    color: #fff;
+}
+
+/* Overlays y mensajes */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 999;
+}
+
+.overlay p {
+    margin-bottom: 20px;
+}
+
+/* Área de Juego */
+#game-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+#gameCanvas {
+    background-color: #2c2c2c;
+    border: 3px solid #fff;
+}
+
+/* Siguiente pieza y datos */
+#nextPieceContainer, #gameInfo {
+    margin: 10px;
+    text-align: center;
+}
+
+#nextPieceCanvas {
+    background-color: #1a1a1a;
+    border: 2px solid #fff;
+}
+
+#scoreDisplay,
+#levelDisplay,
+#linesDisplay,
+#playCounterDisplay {
+    margin: 5px 0;
+}
+
+/* Perfil de usuario */
+.profile-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* Leaderboard */
+#leaderboardContainer {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
+}
+
+#leaderboardTabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.tab-btn.active {
+    background-color: #00ffcc;
+    color: #000;
+}
+
+#leaderboardList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#leaderboardList li {
+    background-color: #2a2a2a;
+    margin: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.leaderboard-rank {
+    font-size: 12px;
+    margin-right: 10px;
+    color: #ccc;
+}
+
+.leaderboard-entry {
+    display: flex;
+    align-items: center;
+}
+
+.leaderboard-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.leaderboard-details {
+    font-size: 10px;
+}
+
+.leaderboard-player {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.leaderboard-player-name {
+    color: #00ffcc;
+}
+
+.leaderboard-flag {
+    width: 20px;
+}
+
+/* Game Over */
+#gameOverScreen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+#gameOverScreen.visible {
+    display: flex;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Compartir */
+.share-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.share-btn.twitter {
+    background-color: #1da1f2;
+    color: #fff;
+}
+
+.share-btn.whatsapp {
+    background-color: #25d366;
+    color: #fff;
+}
+
+/* Cámara oculta */
+.input_video {
+    position: fixed;
+    right: -9999px;
+    bottom: -9999px;
+}
